@@ -89,7 +89,7 @@ function SignUpPage() {
               placeholder="Age"
               className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
               required
-              onChange={(e) => e.target.value}
+              onChange={(e) => setAge(Number(e.target.value))}
             />
             {success && <p className="bg-emerald-200 rounded-sm text-sm text-center">
               {success}</p>}

@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Copy, Download, VolumeX, Volume2, Trash2 } from 'lucide-react';
+import { Copy, Download, Trash2 } from 'lucide-react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '@/AuthContext';
@@ -47,8 +47,11 @@ export const AccessibleForm = ({ extractedText, filename }: AccessibleFormProps)
             extractedText,
             email:user.email
           }, {
-            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}` // or wherever your JWT is stored
+            }
           });
+          console.log(response.data);
         } catch (error) {
           console.error("Error posting to backend:", error);
         }
